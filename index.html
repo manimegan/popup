@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup Message</title>
+    <style>
+        /* Styles for the popup */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ffffff;
+            border: 1px solid #cccccc;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+
+        /* Styles for the overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9998;
+        }
+
+        /* Style for the button */
+        .button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            
+        }
+    </style>
+</head>
+<body>
+
+<!-- Button to trigger the popup -->
+<button class="button" id="popupButton">click the button</button>
+
+<!-- Popup message -->
+<div id="popup" class="popup">
+    <h2>Your system has been hacked!!!</h2>
+</div>
+
+<!-- Overlay -->
+<div id="overlay" class="overlay"></div>
+
+<script>
+    // Get the popup, overlay, and button elements
+    var popup = document.getElementById('popup');
+    var overlay = document.getElementById('overlay');
+    var popupButton = document.getElementById('popupButton');
+
+    // Function to display the popup
+    function showPopup() {
+        popup.style.display = 'block';
+        overlay.style.display = 'block';
+    }
+
+    // Function to close the popup
+    function closePopup() {
+        popup.style.display = 'none';
+        overlay.style.display = 'none';
+    }
+
+    // Event listener for the button click
+    popupButton.addEventListener('click', function () {
+        showPopup();
+    });
+
+    // Event listener to close the popup when clicking outside the box
+    overlay.addEventListener('click', function () {
+        closePopup();
+    });
+</script>
+
+</body>
+</html>
